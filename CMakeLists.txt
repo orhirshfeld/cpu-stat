@@ -9,6 +9,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(
     cpu-stat
     src/main.cpp
+    src/CPUStat.h
+    src/CPUData.h
+    src/CPUSnapshot.h
+    src/CPUStatsPrinter.h
+    src/OptionsParser.h
+    src/CPUData.cpp
+    src/CPUSnapshot.cpp
+    src/CPUStatsPrinter.cpp
+    src/OptionsParser.cpp
+)
+
+
+
+ADD_LIBRARY( 
+    cpu-stat-lib STATIC
+    #src/main.cpp
+    src/CPUStat.h
     src/CPUData.h
     src/CPUSnapshot.h
     src/CPUStatsPrinter.h
@@ -23,6 +40,14 @@ target_include_directories(
     cpu-stat
     PRIVATE src/
 )
+
+target_include_directories(
+    cpu-stat-lib
+    PUBLIC src/
+)
+
+# Add the -fPIC flag to the compilation options for your_library_name
+set_target_properties(cpu-stat-lib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # installation
 include(GNUInstallDirs)
