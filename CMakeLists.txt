@@ -55,3 +55,9 @@ install(TARGETS cpu-stat
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# Install the library
+install(TARGETS cpu-stat-lib
+    EXPORT cpu-stat-lib-targets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
